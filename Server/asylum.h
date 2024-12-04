@@ -1,5 +1,5 @@
 #ifndef ASYLUM_H
-#define ADD_H
+#define ASYLUM_H
 
 #include <string>
 #include <vector>
@@ -26,25 +26,26 @@ private:
     const std::string patientFile = "patients.txt";
     const std::string doctorFile = "doctors.txt";
 
+public:
+
     void loadPatients();
     void loadDoctors();
 
     void savePatients();
     void saveDoctors();
 
-public:
     PsychiatryServer();
     ~PsychiatryServer();
 
-    void addPatient(const std::string& name, const std::string& diagnosis, const std::string& treatment);
-    void removePatient(int id);
-    void editPatient(int id, const std::string& newDiagnosis, const std::string& newTreatment);
+    int addPatient(const std::string& name, const std::string& diagnosis, const std::string& treatment);
+    int removePatient(int id);
+    int editPatient(int id, const std::string& newDiagnosis, const std::string& newTreatment);
 
-    void addDoctor(const std::string& name, const std::string& specialization);
-    void removeDoctor(int id);
+    int addDoctor(const std::string& name, const std::string& specialization);
+    int removeDoctor(int id);
 
-    void listPatients() const;
-    void listDoctors() const;
+    std::string listPatients() const;
+    std::string listDoctors() const;
 };
 
 #endif

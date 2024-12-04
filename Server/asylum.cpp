@@ -5,7 +5,7 @@
 #include <sstream>
 #include <cstdio>
 #include <algorithm>
-
+#include <string>
 
 PsychiatryServer::PsychiatryServer(){
 	loadPatients();
@@ -17,13 +17,13 @@ PsychiatryServer::~PsychiatryServer() {
 	saveDoctors();
 }
 
-void PsychiatryServer::addPatient(const std::string& name, const std::string& diagnosis, const std::string& treatment) {
+int PsychiatryServer::addPatient(const std::string& name, const std::string& diagnosis, const std::string& treatment) {
 	patients.push_back({ nextPatientId++, name, diagnosis, treatment });
 	savePatients();
-	std::cout << "Patient added successfully.\n";
+	return 1;
 }
 
-void PsychiatryServer::removePatient(int id) {
+int PsychiatryServer::removePatient(int id) {
 	auto it = std::remove_if(patients.begin(), patients.end(), [id](const Patient& p) {
 		return p.id == id;
 		});
@@ -31,31 +31,30 @@ void PsychiatryServer::removePatient(int id) {
 	if (it != patients.end()) {
 		patients.erase(it, patients.end());
 		savePatients();
-		std::cout << "Patient removed successfully.\n";
+		return 1;
 	}
-	else std::cout << "Patient not found.\n";
+	else return 0;
 }
 
-void PsychiatryServer::editPatient(int id, const std::string& newDiagnosis, const std::string& newTreatment) {
+int PsychiatryServer::editPatient(int id, const std::string& newDiagnosis, const std::string& newTreatment) {
 	for (auto& patient : patients) {
 		if (patient.id == id) {
 			patient.diagnosis = newDiagnosis;
 			patient.treatment = newTreatment;
 			savePatients();
-			std::cout << "Patient updated successfully.\n";
-			return;
+			return 1;
 		}
 	}
-	std::cout << "Patient not found.\n";
+	return 0;
 }
 
-void PsychiatryServer::addDoctor(const std::string& name, const std::string& specialization) {
+int PsychiatryServer::addDoctor(const std::string& name, const std::string& specialization) {
 	doctors.push_back({ nextDoctorId++, name, specialization });
 	saveDoctors();
-	std::cout << "Doctor added successfully.\n";
+	return 1;
 }
 
-void PsychiatryServer::removeDoctor(int id) {
+int PsychiatryServer::removeDoctor(int id) {
 	auto it = std::remove_if(doctors.begin(), doctors.end(), [id](const Doctor& d) {
 	return d.id == id;
 	});
@@ -63,31 +62,54 @@ void PsychiatryServer::removeDoctor(int id) {
 	if (it != doctors.end()) {
 		doctors.erase(it, doctors.end());
 		saveDoctors();
-		std::cout << "Doctor removed successfully.\n";
+		return 1;
 	}
 	else
-		std::cout << "Doctor not found.\n";
+		return 0;
 }
 
-void PsychiatryServer::listPatients() const {
-	std::cout << "--- List of Patients ---\n";
+std::string PsychiatryServer::listPatients() const {
+	std::string result;
+	
+	result += "--- List of Patients ---\n";
+
 	for (const auto& patient : patients) {
-		std::cout << "[Patient] ID: " << patient.id << ", Name: " << patient.name
-		<< ", Diagnosis: " << patient.diagnosis << ", Treatment: " << patient.treatment << '\n';
+		result += "[Patient] ID: ";
+		result += std::to_string(patient.id);
+		result += ", Name: ";
+		result += patient.name;
+		result += ", Diagnosis: ";
+		result += patient.diagnosis;
+		result += ", Treatment: ";
+		result += patient.treatment;
+		result += '\n';
 	}
+	return result;
 }
 
-void PsychiatryServer::listDoctors() const {
-	std::cout << "--- List of Doctors ---\n";
+std::string PsychiatryServer::listDoctors() const {
+	std::string result;
+	
+	result += "--- List of Doctors ---\n";
+
 	for (const auto& doctor : doctors) {
-		std::cout << "[Doctor] ID: " << doctor.id << ", Name: " << doctor.name
-		<< ", Specialization: " << doctor.specialization << '\n';
+		result += "[Doctor] ID: ";
+		result += std::to_string(doctor.id);
+		result += ", Name: ";
+		result += doctor.name;
+		result += ", Specialization: ";
+		result += doctor.specialization;
+		result += '\n';
 	}
+	return result;
 }
 
 void PsychiatryServer::loadPatients() {
      std::ifstream in(patientFile);
-     if (!in) return;
+     if (!in)
+     {
+     		return;
+     }
      std::string line;
      while (std::getline(in, line)) {
          std::istringstream iss(line);

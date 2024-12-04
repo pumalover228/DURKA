@@ -15,5 +15,5 @@
 #include <string>
 
 namespace network{
-	int send_to_server(std::string info);
+	int speak_to_server(std::string info);
 }

@@ -105,7 +105,7 @@ int main()
 			continue;
 	}
 		
-	if (choice != 0) network::send_to_server(result);
+	if (choice != 0) network::speak_to_server(result);
 	
 	} while (choice != 0);
 

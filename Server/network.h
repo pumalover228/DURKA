@@ -14,9 +14,12 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+#include <string>
+
 #define PORT "3490"
 #define BACKLOG 10
 
+void *get_in_addr(struct sockaddr *sa);
 void sigchld_handler(int s);
 void connect_with_client(int &sockfd);
 

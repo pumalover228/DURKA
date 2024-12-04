@@ -3,6 +3,8 @@
 
 #include <string>
 
-void server_menu(std::string info);
+#include "asylum.h"
+
+std::string server_menu(std::string info, PsychiatryServer &db);
 
 #endif
