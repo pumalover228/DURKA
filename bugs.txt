@@ -1,0 +1,3 @@
+bugs or mistakes or I'm just stupid ni-:
+
+1) выводится при выполнении пунктов в меню(1-7) "getaddrinfo: Temporary failure in name resolution"
