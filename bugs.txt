@@ -1,5 +1,5 @@
 bugs or mistakes or I'm just stupid ni-:
 
 1) при выполнении пунктов в меню (1-7) в программе из папки Client "getaddrinfo: Temporary failure in name resolution" - исправлена путем замены хоста
-2)
+2) при выполнении (2.Remove patient) программа делает результат, но не выводит, что (пациент удален успешно), а при (5.Remove Doctor) прога работает как надо.
 ...
