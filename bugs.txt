@@ -1,3 +1,5 @@
 bugs or mistakes or I'm just stupid ni-:
 
-1) при выполнении пунктов в меню (1-7) в программе из папки Client "getaddrinfo: Temporary failure in name resolution"
+1) при выполнении пунктов в меню (1-7) в программе из папки Client "getaddrinfo: Temporary failure in name resolution" - исправлена путем замены хоста
+2)
+...
