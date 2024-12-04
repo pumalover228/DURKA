@@ -9,9 +9,10 @@ using namespace std;
 int main()
 {
 	int choice;
-	string result;
+	
 
 	do {
+		string result;
 		cout << "\n--- Psychiatry Server ---\n";
 		cout << "1. Add Patient\n2. Remove Patient\n3. Edit Patient\n4. Add Doctor\n5. Remove Doctor\n6. List Patients\n7. List Doctors\n0. Exit\n";
 		cout << "Choose: ";
