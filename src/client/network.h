@@ -1,3 +1,6 @@
+#ifndef NETWORK_H
+#define NETWORK_H
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
@@ -16,3 +19,5 @@ namespace network{
 	int speak_to_server(std::string info);
 	void init_server(std::string &hostname, std::string &port);
 }
+
+#endif

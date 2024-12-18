@@ -2,6 +2,5 @@ cmake_minimum_required(VERSION 3.00)
 
 project(server)
 
-set(SOURCE_LIB network.cpp asylum.cpp menu.cpp)
-
-add_library(server_lib STATIC ${SOURCE_LIB})
+add_library(server_lib STATIC network.cpp asylum.cpp menu.cpp)
+target_include_directories(server_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
