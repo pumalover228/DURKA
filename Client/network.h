@@ -7,13 +7,12 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#define PORT "3490"
 #define MAXDATASIZE 100 
-#define HOSTNAME "obnoxious"
 
 #include <iostream>
 #include <string>
 
 namespace network{
 	int speak_to_server(std::string info);
+	void init_server(std::string &hostname, std::string &port);
 }

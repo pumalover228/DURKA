@@ -1,9 +1,21 @@
 #include "network.h"
 
 #include <cstring>
+#include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
+
+void network::init_server(string &hostname, string &port)
+{
+		ifstream config_file("config.txt");
+		
+		getline(config_file, hostname);
+		getline(config_file, port);
+		
+		config_file.close();
+}
 
 int network::speak_to_server(string info)
 {
@@ -14,11 +26,16 @@ int network::speak_to_server(string info)
 	int valread;
 	char s[INET6_ADDRSTRLEN];
 
+	string HOSTNAME;
+	string PORT;
+	network::init_server(HOSTNAME, PORT);
+	
+
 	memset(&hints, 0, sizeof hints);
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 
-	if ((rv = getaddrinfo(HOSTNAME, PORT, &hints, &servinfo)) != 0) {
+	if ((rv = getaddrinfo(HOSTNAME.c_str(), PORT.c_str(), &hints, &servinfo)) != 0) {
 	  fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
 	  return 1;
 	}

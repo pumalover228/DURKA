@@ -16,7 +16,7 @@
 
 #include <string>
 
-#define PORT "3490"
+#define PORT "8080"
 #define BACKLOG 10
 
 void *get_in_addr(struct sockaddr *sa);
