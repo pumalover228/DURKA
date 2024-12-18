@@ -22,7 +22,7 @@ int main()
 		
 		int bad_input = client_menu(choice, result);
 		
-		if (choice != 0) network::speak_to_server(result);
+		if (bad_input != 0 || choice != 0) network::speak_to_server(result);
 			
 	} while (choice != 0);
 
