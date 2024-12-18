@@ -40,6 +40,8 @@ int main(void)
 
 		log = server_menu(str_buffer, dbShizov);
 		
+		cout << "Sent to client: " << log << endl;
+		
 		send(new_fd, log.c_str() , strlen(log.c_str()), 0);
 	}
 
