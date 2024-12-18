@@ -1,0 +1,2 @@
+/usr/bin/ar qc libserver_lib.a CMakeFiles/server_lib.dir/Server/network/network.cpp.o CMakeFiles/server_lib.dir/Server/asylum/asylum.cpp.o CMakeFiles/server_lib.dir/Server/menu/menu.cpp.o
+/usr/bin/ranlib libserver_lib.a

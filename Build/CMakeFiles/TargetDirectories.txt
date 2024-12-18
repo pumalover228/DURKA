@@ -1,0 +1,10 @@
+/home/obnoxious/Desktop/DURKA/src/Build/CMakeFiles/server.dir
+/home/obnoxious/Desktop/DURKA/src/Build/CMakeFiles/client.dir
+/home/obnoxious/Desktop/DURKA/src/Build/CMakeFiles/edit_cache.dir
+/home/obnoxious/Desktop/DURKA/src/Build/CMakeFiles/rebuild_cache.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Server/CMakeFiles/server_lib.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Server/CMakeFiles/edit_cache.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Server/CMakeFiles/rebuild_cache.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Client/CMakeFiles/client_lib.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Client/CMakeFiles/edit_cache.dir
+/home/obnoxious/Desktop/DURKA/src/Build/Client/CMakeFiles/rebuild_cache.dir
