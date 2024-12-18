@@ -25,6 +25,7 @@ string server_menu(string info, PsychiatryServer &db)
         }
         case 2: {
             if(db.removePatient(stoi(svec[1]))) 
+            result = "Patient removed successfully.";
             break;
         }
         case 3: {
