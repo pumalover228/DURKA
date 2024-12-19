@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
-
+#include <syslog.h>
 #include "menu.h"
+
+#define Debug
 
 using namespace std;
 
@@ -64,9 +66,13 @@ int client_menu(int choice, string &result)
 	result += to_string(choice);
 	result += ' ';
 	
+
 	switch (choice) {
+		openlog("cases",LOG_PID,LOG_USER);
 		case 1:	{
+			
 			string name, diagnosis, treatment;
+			
 			cout << "Enter patient name: ";
 			getline(cin, name);
 			cout << "Enter diagnosis: ";
@@ -74,14 +80,16 @@ int client_menu(int choice, string &result)
 			cout << "Enter treatment: ";
 			getline(cin, treatment);
 			
+			syslog(LOG_INFO,"%s %s %s was welcome in our shizarium",name.c_str(),diagnosis.c_str(),treatment.c_str());
 			
-			return addPatient(result, name, diagnosis, treatment);	
+			return addPatient(result, name, diagnosis, treatment);
 			break;
 		}	
 		case 2: {
          int id;
          cout << "Enter patient ID to remove: ";
          cin >> id;
+		 syslog(LOG_INFO, "Patient with ID %d was desingrated",id);
          
          return removePatient(result, id);
          break;
@@ -96,6 +104,7 @@ int client_menu(int choice, string &result)
 			getline(cin, newDiagnosis);
 			cout << "Enter new treatment: ";
 			getline(cin, newTreatment);
+			syslog(LOG_INFO,"Patient with id %d is having %s and %s now and new friends in head))", id , newDiagnosis.c_str(),newTreatment.c_str());
 			
 			return editPatient(result, id, newDiagnosis, newTreatment);	
 			break;
@@ -107,7 +116,7 @@ int client_menu(int choice, string &result)
 			getline(std::cin, name);
 			cout << "Enter specialization: ";
 			getline(std::cin, specialization);
-			
+			syslog(LOG_INFO,"We are welcome a new doctor %s %s in our strange team(run faster, fool)",name.c_str(), specialization.c_str());
 			return addDoctor(result, name, specialization);
 			break;
 		}
@@ -117,6 +126,7 @@ int client_menu(int choice, string &result)
 			cin >> id;
 			
 			return removeDoctor(result, id);
+			syslog(LOG_INFO,"Our doctor with id %d has been eaten",id);
 			break;
 		}
 		case 6:

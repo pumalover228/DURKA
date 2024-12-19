@@ -1,5 +1,5 @@
 #include "network.h"
-
+#include <syslog.h>
 #include <cstring>
 #include <string>
 #include <vector>
@@ -9,12 +9,15 @@ using namespace std;
 
 void network::init_server(string &hostname, string &port)
 {
+	openlog("init",LOG_PID,LOG_USER);
 		ifstream config_file("config.txt");
 		
 		getline(config_file, hostname);
 		getline(config_file, port);
 		
 		config_file.close();
+		syslog(LOG_INFO,"Config initialised");
+		closelog();
 }
 
 int network::speak_to_server(string info)
